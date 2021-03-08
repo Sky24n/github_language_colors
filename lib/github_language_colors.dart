@@ -8,12 +8,15 @@ class LanguageHelper {
 
   static Map<String, String> getResource(List list) {
     Map<String, String> map = HashMap();
-    List<MapEntry<String, String>> mapEntryList = List();
+    List<MapEntry<String, String>> mapEntryList = [];
     for (int i = 0, length = list.length; i < length; i++) {
       Map<String, String> tokens = list[i];
-      MapEntry<String, String> mapEntry =
-          MapEntry(tokens['name'], tokens['color']);
-      mapEntryList.add(mapEntry);
+      String name = tokens['name']!;
+      String? color = tokens['color'];
+      if (color != null) {
+        MapEntry<String, String> mapEntry = MapEntry(name, color);
+        mapEntryList.add(mapEntry);
+      }
     }
     map.addEntries(mapEntryList);
     return map;
@@ -38,9 +41,9 @@ class LanguageHelper {
 }
 
 class GithubLanguage {
-  String name;
-  String urlParam;
-  String color;
+  String? name;
+  String? urlParam;
+  String? color;
 
   GithubLanguage.fromJson(Map<String, dynamic> json)
       : name = json['name'],
