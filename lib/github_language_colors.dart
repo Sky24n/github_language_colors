@@ -41,7 +41,7 @@ class LanguageHelper {
 }
 
 class GithubLanguage {
-  String? name;
+  String name;
   String? urlParam;
   String? color;
 
